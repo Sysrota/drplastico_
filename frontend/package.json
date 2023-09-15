@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "description": "Fancy Next.js app",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "build:static": "next build && next out"
+  },
+  "dependencies": {
+    "next": "^13.4.20-canary.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.67.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.1",
+    "@types/react": "^18.2.21",
+    "typescript": "^5.2.2"
+  }
+}
