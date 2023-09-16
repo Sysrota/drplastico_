@@ -1,57 +1,60 @@
 import Head from "next/head";
-import styles from '../../styles/home.module.scss'
 import Image from "next/image";
-import logoImg from '../../public/logo.svg'
-import { Input } from "../components/ui/input";
-import { Button } from "../components/ui/button";
 import Link from 'next/link';
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
+import logoImg from '../../../public/logo.svg';
+import styles from '../../../styles/home.module.scss';
 import { FormEvent, useContext, useState } from "react";
-import {AuthContext} from "../contexts/AuthContexts"
+import {AuthContext} from '../../contexts/AuthContexts'
 
-export default function Home () {
-
-	const {singIn} = useContext(AuthContext);
-
+export default function Signup () {
+	const {singUp} = useContext(AuthContext);
+	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password,setPassword] = useState('');
 	const [loading, setLoading] = useState(false);
 
 
-	async function logar (e: FormEvent){
+	async function salvar(e:FormEvent) {
 		e.preventDefault();
-
-
-		if(email==='' || password === ''){
-			alert("Por favor informe os dados corretamente")
-			return;	
+		if(name === '' || email === '' || password === ''){
+			alert('Por favor, preencha todos os dados')
+			return;
 		}
 
 		setLoading(true)
 
-		let dadosLogin ={
+
+		let dadosUsuario ={
 			email,
 			password,
-			loading
+			name
 		}
-	
-		await singIn(dadosLogin);
+		singUp(dadosUsuario);
 
 		setLoading(false)
-	} 
-
+	}
 
 	return (
 		<>
 		<Head>
-			<title>Dr Plastico - Faça seu Login</title>
+			<title>Dr Plastico - Cadatro de Usuário</title>
 		</Head>
 		<div className ={styles.containerCenter}>
 			<Image src={logoImg} alt="Logo Sysrota"/>
 			<div className={styles.login}>
 			<h1>
-				Informe seus dados para acesso	
+				Cadastro de Usuário	
 			</h1>
-				<form onSubmit={logar}>
+				<form onSubmit={salvar}>
+				<Input
+						placeholder="Informe o Nome Completo"
+						type="text"
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+					/>
+
 					<Input
 						placeholder="Informe seu email"
 						type="text"
@@ -68,11 +71,11 @@ export default function Home () {
 						type="submit"
 						loading={loading}
 					>
-						Acessar
+						Salvar
 					</Button>
 				</form>
-				<Link legacyBehavior href={"/signup"}>
-					<a className={styles.text}>Não possui uma conta? Cadastre-se</a>
+				<Link legacyBehavior href={"/"}>
+					<a className={styles.text}>Já possui uma conta? Clique aqui para fazer login</a>
 				</Link>
 			</div>
 		</div>

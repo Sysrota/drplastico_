@@ -11,6 +11,8 @@
     --preto: #000; 
     --verde-escuto: #035703;
     --vermelho-escuro: #FF3F4B;
+    --azul-escuro:#090b8b;
+
 
     --dark-900: #101026;
     --dark-700: #1D1D2E;
@@ -26,7 +28,7 @@ a{
     text-decoration: none;
 }
 body{
-    background: var(--branco);
+    background: var(--dark-700);
 }
 
 body,input,textarea,select,button{
