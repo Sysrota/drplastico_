@@ -7,6 +7,7 @@ import logoImg from '../../../public/logo.svg';
 import styles from '../../../styles/home.module.scss';
 import { FormEvent, useContext, useState } from "react";
 import {AuthContext} from '../../contexts/AuthContexts'
+import { toast } from "react-toastify";
 
 export default function Signup () {
 	const {singUp} = useContext(AuthContext);
@@ -19,7 +20,7 @@ export default function Signup () {
 	async function salvar(e:FormEvent) {
 		e.preventDefault();
 		if(name === '' || email === '' || password === ''){
-			alert('Por favor, preencha todos os dados')
+			toast.info("Por favor, informe todos os campos!")
 			return;
 		}
 

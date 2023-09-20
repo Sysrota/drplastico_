@@ -7,6 +7,9 @@ import { Button } from "../components/ui/button";
 import Link from 'next/link';
 import { FormEvent, useContext, useState } from "react";
 import {AuthContext} from "../contexts/AuthContexts"
+import { toast } from "react-toastify";
+import { GetServerSideProps } from "next";
+import { funcaoUsuariosNaoLogados } from "../utils/funcaoUsuariosNaoLogados";
 
 export default function Home () {
 
@@ -22,7 +25,7 @@ export default function Home () {
 
 
 		if(email==='' || password === ''){
-			alert("Por favor informe os dados corretamente")
+			toast.warn("Por favor, informe todos os campos!")
 			return;	
 		}
 
@@ -79,3 +82,17 @@ export default function Home () {
 		</>
 	)
 }
+
+// export const getServerSideProps: GetServerSideProps = async (ctx) =>{
+// 	console.log("Testando Server Side")
+// 	return{
+// 		props:{}
+// 	}
+// }
+
+
+export const getServerSideProps = funcaoUsuariosNaoLogados(async (ctx) => {
+	return {
+		props: {}
+	}
+})

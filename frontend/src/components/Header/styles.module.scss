@@ -1,0 +1,54 @@
+.headerContainer{
+    height: 5rem;
+}
+.headerContent{
+    max-width: 1120px;
+    height: 5rem;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img{
+        margin: 1 auto;
+        cursor: pointer;
+    }
+
+}
+
+.menuNav{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    a{
+        color: var(--branco);
+        padding: 0 0.5rem;
+        display: inline-block;
+        position: relative;
+        transition: color 0.7s;
+
+        & + a {
+            margin-left: 2rem;
+        }
+    
+        &:hover{
+            color: var(--vermelho-escuro);
+        }
+    }
+
+    button{
+        margin-left: 2rem;
+        background: transparent;
+        transition: transform 0.2s;
+        border: 0;
+
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+
+
+
+}
